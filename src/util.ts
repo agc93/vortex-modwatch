@@ -1,4 +1,4 @@
-import { IState, IProfileMod, IMod, IExtensionApi } from "vortex-api/lib/types/api"
+import { IState, IExtensionApi } from "vortex-api/lib/types/api"
 import { util, selectors } from "vortex-api";
 
 type PluginList = { [key: string]: Plugin; }
@@ -59,14 +59,13 @@ export function isGamePlugin(state: IState, plugin: {name: string, plugin: Plugi
     return plugin.plugin.isNative || (plugin.plugin.modName == '' && isInDLCGroup(state, plugin.name)) || (plugin.plugin.modName == '' && isKnownAuthor(state, plugin.name));
 }
 
-export function isInDLCGroup(state: IState, fileName: any): boolean {
+function isInDLCGroup(state: IState, fileName: any): boolean {
     var pluginInfo = util.getSafe<{group?: string}>(state.session, ['plugins', 'pluginInfo', fileName], undefined);
     return pluginInfo && pluginInfo.group && pluginInfo.group.toLowerCase().indexOf('dlc') !== -1;
 }
 
-export function isKnownAuthor(state: IState, fileName: any) {
+function isKnownAuthor(state: IState, fileName: any) {
     var knownAuthors = ['mlipari', 'bnesmith', 'rsalvatore'];
     var pluginInfo = util.getSafe<{author?: string}>(state.session, ['plugins', 'pluginInfo', fileName], undefined);
     return pluginInfo && pluginInfo.author && knownAuthors.some(a => a == pluginInfo.author.toLowerCase());
 }
-

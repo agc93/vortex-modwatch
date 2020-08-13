@@ -39,7 +39,7 @@
     "typescript": "^3.5.2",
     "vortex-api": "github:Nexus-Mods/vortex-api",
     "vortex-ext-common": "^0.0.8",
-    "vortex-showcase-api": "^0.0.6",
+    "vortex-showcase-api": "^0.0.8",
     "webpack": "^4.35.0",
     "webpack-cli": "^3.3.4"
   },

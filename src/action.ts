@@ -1,7 +1,6 @@
-import { IShowcaseRenderer, ModInfoDisplay, ITemplateModel, IShowcaseAction } from "vortex-showcase-api";
-import { IExtensionApi, IMod, IDialogResult } from "vortex-api/lib/types/api";
+import { IShowcaseAction } from "vortex-showcase-api";
+import { IExtensionApi } from "vortex-api/lib/types/api";
 import { log, util, selectors } from "vortex-api";
-import { getPluginList, getOrderedPluginList } from "./util";
 import { IModWatchModList, IModWatchUser } from "./types";
 import { ModWatchClient } from "./client";
 import { uploadModList, requestCredentials } from "./upload";

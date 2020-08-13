@@ -1,12 +1,10 @@
 import { IShowcaseRenderer, ModInfoDisplay, ITemplateModel } from "vortex-showcase-api";
-import { IExtensionApi, IMod, IState } from "vortex-api/lib/types/api";
+import { IExtensionApi, IMod } from "vortex-api/lib/types/api";
 import { log, util, selectors } from "vortex-api";
-import { getPluginList, getOrderedPluginList, isSupported, isInDLCGroup, isGamePlugin } from "./util";
+import { getPluginList, getOrderedPluginList, isSupported, isGamePlugin } from "./util";
 import { IModWatchModList } from "./types";
 
 export class ModWatchRenderer implements IShowcaseRenderer {
-    // _supportedGames: string[] = ['skyrim', 'skyrimse', 'fallout4', 'fallout4vr', 'skyrimvr']
-    
 
     createModel(api: IExtensionApi, mod: IMod): ModInfoDisplay|any {
         log('debug', 'invoking test renderer: createModel', {mod: mod.id});
@@ -22,7 +20,6 @@ export class ModWatchRenderer implements IShowcaseRenderer {
     }
 
     async createShowcase(api: IExtensionApi, model: ITemplateModel): Promise<string> {
-        // var result: IDialogResult = await api.showDialog('question', 'Additional Information', )
         var state = api.getState();
         var currentGame = selectors.activeGameId(state);
         if (isSupported(currentGame)) {
@@ -41,7 +38,6 @@ export class ModWatchRenderer implements IShowcaseRenderer {
             log('warn', 'unsupported game!', {game: model.game});
             return Promise.reject('Unsupported game!');
         }
-        // return Promise.resolve('somesuchtext');
     }
 
     isEnabled?(gameId: string): boolean {
