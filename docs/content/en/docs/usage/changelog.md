@@ -6,11 +6,20 @@ description: >
   Update history for the Modwatch for Vortex extension
 aliases:
   - /updates/v0.0.1
+  - /updates/v0.0.2
 ---
 
 {{% pageinfo %}}
-The latest version of the extensions is always available [on Nexus Mods](https://www.nexusmods.com/site/mods/152?tab=files).
+The latest version of the extension is always available [on Nexus Mods](https://www.nexusmods.com/site/mods/152?tab=files).
 {{% /pageinfo %}}
+
+## 0.0.2
+
+> Hotfix to Initial Release
+
+This release fixes a minor bug that was preventing enabled DLC plugins from being included in showcases for FO4 and SLE.
+
+This version **requires** Vortex 1.3+ and Vortex Showcase 0.1+.
 
 ## 0.0.1
 
