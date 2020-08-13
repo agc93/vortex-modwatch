@@ -1,7 +1,7 @@
 {
-  "name": "vortex-showcase-modwatch",
+  "name": "vortex-modwatch",
   "version": "0.0.1",
-  "description": "Modwat.ch extension for Showcase extensions.",
+  "description": "Modwat.ch extension for Showcase.",
   "main": "./dist/index.js",
   "scripts": {
     "webpack": "node ./node_modules/webpack/bin/webpack --config webpack.config.js --display-error-details --progress --profile --color",
