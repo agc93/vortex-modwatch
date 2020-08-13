@@ -3,7 +3,7 @@ import { IExtensionContext, IExtensionApi, IMod } from 'vortex-api/lib/types/api
 import { showcaseAPI } from "vortex-showcase-api";
 import { ModWatchRenderer } from "./renderer";
 import { ModWatchAction } from "./action";
-import { isSupported, getOrderedPluginList } from './util';
+import { isSupported, getOrderedPluginList, isShowcaseReady } from './util';
 import { IModWatchModList } from './types';
 import { getModName } from "vortex-ext-common";
 import { uploadModList, requestCredentials } from './upload';
@@ -12,15 +12,19 @@ import { uploadModList, requestCredentials } from './upload';
 function main(context: IExtensionContext) {
     context.requireExtension('Vortex Showcase');
     context.once(() => {
-        (context.api.ext as showcaseAPI).addShowcaseAction('Publish', () => new ModWatchAction(context.api));
-        (context.api.ext as showcaseAPI).addShowcaseRenderer('Modwat.ch', () => new ModWatchRenderer());
+        if (isShowcaseReady(context.api)) {
+            (context.api.ext as showcaseAPI).addShowcaseAction('Publish', () => new ModWatchAction(context.api));
+            (context.api.ext as showcaseAPI).addShowcaseRenderer('Modwat.ch', () => new ModWatchRenderer());
+        } else {
+            log('warn', 'Showcase API not found! Modwatch support not installed');
+        }
     });
     context.registerAction('mod-icons', 101, 'profile', {}, 'Upload to modwat.ch', () => {
         if (isSupported(context.api.getState())) {
             // buildReport(context.api);
             context.api.ext.createShowcase([], 'Modwat.ch', 'Publish');
         }
-    }, () => isSupported(context.api.getState()));
+    }, () => isSupported(context.api.getState()) && isShowcaseReady(context.api));
     return true;
 }
 

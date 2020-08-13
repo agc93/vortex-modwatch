@@ -1,4 +1,4 @@
-import { IState, IProfileMod, IMod } from "vortex-api/lib/types/api"
+import { IState, IProfileMod, IMod, IExtensionApi } from "vortex-api/lib/types/api"
 import { util, selectors } from "vortex-api";
 
 type PluginList = { [key: string]: Plugin; }
@@ -37,6 +37,10 @@ export function isSupported(test: string|IState) {
     }
     const _supportedGames: string[] = ['skyrim', 'skyrimse', 'fallout4'];
     return _supportedGames.some(g => g == gameId)
+}
+
+export function isShowcaseReady(api: IExtensionApi): boolean {
+    return (api.ext.createShowcase != undefined) && (api.ext.addShowcaseAction != undefined) && (api.ext.addShowcaseRenderer != undefined);
 }
 
 export function getOrderedPluginList(state: IState, includeNative: boolean = false): {name: string, plugin: Plugin}[] {
