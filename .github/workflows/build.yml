@@ -57,7 +57,7 @@ jobs:
 
           To manually install, extract the zip to %APPDATA%\Vortex\plugins\vortex-modwatch.
 
-          Read about the changes in this release at [modwatch.vortex.support/updates/${{ steps.vars.outputs.tag }}](https://showcase.vortex.support/updates/${{ steps.vars.outputs.tag }}).
+          Read about the changes in this release at [modwatch.vortex.support/updates/${{ steps.vars.outputs.tag }}](https://modwatch.vortex.support/updates/${{ steps.vars.outputs.tag }}).
         files: |
           ./extension/vortex-modwatch.zip
       env:
