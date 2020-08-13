@@ -46,8 +46,14 @@ C:\Users\&amp;lt;your-user-name-here&amp;gt;\AppData\Roaming\Vortex\plugins\vort
 &lt;h3 id="selected-mods">Selected Mods&lt;/h3>
 &lt;p>Since we're using Vortex Showcase under the covers, you can also upload modlists with only some mods. Select multiple mods in your Mods list and then click the &lt;em>Create Showcase&lt;/em> button at the &lt;strong>bottom&lt;/strong> of the Mods list. Optionally, enter a title and make sure to choose the &lt;em>Modwat.ch&lt;/em> format when prompted. One the showcase has been generated, you should see a notification with a &lt;em>Publish&lt;/em> button. Click that (and enter your username/password when prompted) to immediately upload a modlist using just the mods you had selected.&lt;/p></description></item><item><title>Docs: Changelog</title><link>/docs/usage/changelog/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/usage/changelog/</guid><description>
 &lt;div class="pageinfo pageinfo-primary">
-&lt;p>The latest version of the extensions is always available &lt;a href="https://www.nexusmods.com/site/mods/152?tab=files">on Nexus Mods&lt;/a>.&lt;/p>
+&lt;p>The latest version of the extension is always available &lt;a href="https://www.nexusmods.com/site/mods/152?tab=files">on Nexus Mods&lt;/a>.&lt;/p>
 &lt;/div>
+&lt;h2 id="002">0.0.2&lt;/h2>
+&lt;blockquote>
+&lt;p>Hotfix to Initial Release&lt;/p>
+&lt;/blockquote>
+&lt;p>This release fixes a minor bug that was preventing enabled DLC plugins from being included in showcases for FO4 and SLE.&lt;/p>
+&lt;p>This version &lt;strong>requires&lt;/strong> Vortex 1.3+ and Vortex Showcase 0.1+.&lt;/p>
 &lt;h2 id="001">0.0.1&lt;/h2>
 &lt;blockquote>
 &lt;p>Initial Release&lt;/p>
