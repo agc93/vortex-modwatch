@@ -1,7 +1,7 @@
 import { IShowcaseRenderer, ModInfoDisplay, ITemplateModel } from "vortex-showcase-api";
-import { IExtensionApi, IMod } from "vortex-api/lib/types/api";
+import { IExtensionApi, IMod, IState } from "vortex-api/lib/types/api";
 import { log, util, selectors } from "vortex-api";
-import { getPluginList, getOrderedPluginList, isSupported } from "./util";
+import { getPluginList, getOrderedPluginList, isSupported, isInDLCGroup, isGamePlugin } from "./util";
 import { IModWatchModList } from "./types";
 
 export class ModWatchRenderer implements IShowcaseRenderer {
@@ -20,15 +20,16 @@ export class ModWatchRenderer implements IShowcaseRenderer {
         }
         return null;
     }
+
     async createShowcase(api: IExtensionApi, model: ITemplateModel): Promise<string> {
         // var result: IDialogResult = await api.showDialog('question', 'Additional Information', )
-        var currentGame = selectors.activeGameId(api.getState());
+        var state = api.getState();
+        var currentGame = selectors.activeGameId(state);
         if (isSupported(currentGame)) {
-            log('debug', 'invoking test renderer: createShowcase', {model});
             log('debug', 'building full plugin list');
-            var orderedPlugins = getOrderedPluginList(api.getState(), true);
+            var orderedPlugins = getOrderedPluginList(state, true);
             var modIds = model.mods.map(m => m.meta.id);
-            orderedPlugins = orderedPlugins.filter(pl => pl.plugin.isNative || modIds.some(id => id == pl.plugin.modName));
+            orderedPlugins = orderedPlugins.filter(pl => modIds.some(id => id == pl.plugin.modName) || isGamePlugin(state, pl));
             var output: IModWatchModList = {
                 game: currentGame,
                 plugins: orderedPlugins.map(pl => pl.name),
