@@ -40,7 +40,7 @@ export function isSupported(test: string|IState) {
 }
 
 export function isShowcaseReady(api: IExtensionApi): boolean {
-    return (api.ext.createShowcase != undefined) && (api.ext.addShowcaseAction != undefined) && (api.ext.addShowcaseRenderer != undefined);
+    return (api.ext && api.ext.createShowcase != undefined) && (api.ext && api.ext.addShowcaseAction != undefined) && (api.ext && api.ext.addShowcaseRenderer != undefined);
 }
 
 export function getOrderedPluginList(state: IState, includeNative: boolean = false): {name: string, plugin: Plugin}[] {
